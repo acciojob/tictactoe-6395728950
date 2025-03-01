@@ -67,37 +67,42 @@
             startGame(player1, player2);
         });
 
-        function startGame(player1, player2) {
-            let board = document.getElementById("board");
-            let message = document.getElementById("message");
-            let currentPlayer = player1;
-            let currentSymbol = "X";
-            let cells = [];
-            
-            board.innerHTML = ""; // Clear board
-            message.textContent = `${currentPlayer}, you're up!`;
-            
-            for (let i = 1; i <= 9; i++) {
-                let cell = document.createElement("div");
-                cell.classList.add("cell");
-                cell.id = i;
-                cell.addEventListener("click", function() {
-                    if (!cell.textContent) {
-                        cell.textContent = currentSymbol;
-                        cells[i - 1] = currentSymbol;
-                        if (checkWin(cells, currentSymbol)) {
-                            message.textContent = `${currentPlayer} congratulations you won!`;
-                            document.querySelectorAll(".cell").forEach(cell => cell.style.pointerEvents = "none");
-                            return;
-                        }
-                        currentPlayer = (currentPlayer === player1) ? player2 : player1;
-                        currentSymbol = (currentSymbol === "X") ? "O" : "X";
-                        message.textContent = `${currentPlayer}, you're up!`;
-                    }
-                });
-                board.appendChild(cell);
+       function startGame(player1, player2) {
+    let board = document.getElementById("board");
+    let message = document.getElementById("message");
+    let currentPlayer = player1;
+    let currentSymbol = "X";
+    let cells = [];
+    let filledCells = 0; // Add this counter
+
+    board.innerHTML = ""; // Clear board
+    message.textContent = `${currentPlayer}, you're up!`;
+
+    for (let i = 1; i <= 9; i++) {
+        let cell = document.createElement("div");
+        cell.classList.add("cell");
+        cell.id = i;
+        cell.addEventListener("click", function() {
+            if (!cell.textContent) {
+                cell.textContent = currentSymbol;
+                cells[i - 1] = currentSymbol;
+                filledCells++; // Increment the counter here
+                if (checkWin(cells, currentSymbol)) {
+                    message.textContent = `${currentPlayer} congratulations you won!`;
+                    document.querySelectorAll(".cell").forEach(cell => cell.style.pointerEvents = "none");
+                    return;
+                } else if (filledCells === 9) { // Check for draw here
+                    message.textContent = "It's a draw!";
+                    return;
+                }
+                currentPlayer = (currentPlayer === player1) ? player2 : player1;
+                currentSymbol = (currentSymbol === "X") ? "O" : "X";
+                message.textContent = `${currentPlayer}, you're up!`;
             }
-        }
+        });
+        board.appendChild(cell);
+    }
+}
 
         function checkWin(cells, symbol) {
             const winningCombos = [
