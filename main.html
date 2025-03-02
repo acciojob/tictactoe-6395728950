@@ -94,7 +94,7 @@
                 filledCells++; // Increment the counter here
  if (filledCells>4 && checkWin(cells, currentSymbol)) {
 	   message.textContent = `${currentPlayer} congratulations you won!`;
-                    // document.querySelectorAll(".cell").forEach(cell => cell.style.pointerEvents = "none");
+                    document.querySelectorAll(".cell").forEach(cell => cell.style.pointerEvents = "none");
 // 					setTimeout(() => {
                    
 //                   document.getElementById("setup").style.display = "block";
@@ -106,7 +106,7 @@
                     return;
                 } else if (filledCells === 9) { // Check for draw here
                     message.textContent = "It's a draw!";
-					  // document.querySelectorAll(".cell").forEach(cell => cell.style.pointerEvents = "none");
+					  document.querySelectorAll(".cell").forEach(cell => cell.style.pointerEvents = "none");
 					
                     return;
                 }
