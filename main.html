@@ -81,7 +81,7 @@
     let filledCells = 0; // Add this counter
 
     board.innerHTML = ""; // Clear board
-    message.textContent = `${currentPlayer}, you're up!`;
+    message.textContent = `${currentPlayer}, you're up`;
 
     for (let i = 1; i <= 9; i++) {
         let cell = document.createElement("div");
@@ -112,7 +112,7 @@
                 }
                 currentPlayer = (currentPlayer === player1) ? player2 : player1;
                 currentSymbol = (currentSymbol === "X") ? "O" : "X";
-                message.textContent = `${currentPlayer}, you're up!`;
+                message.textContent = `${currentPlayer}, you're up`;
             }
         });
         board.appendChild(cell);
