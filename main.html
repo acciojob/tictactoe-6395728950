@@ -89,7 +89,8 @@
         cell.id = i;
         cell.addEventListener("click", function() {
             if (!cell.textContent) {
-                cell.textContent = currentSymbol;
+                cell.dataset.symbol = currentSymbol;
+				cell.textContent = cell.dataset.symbol;
                 cells[i - 1] = currentSymbol;
                 filledCells++; // Increment the counter here
  if (filledCells>4 && checkWin(cells, currentSymbol)) {
