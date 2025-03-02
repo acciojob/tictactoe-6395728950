@@ -76,7 +76,7 @@
     let board = document.getElementById("board");
     let message = document.getElementById("message");
     let currentPlayer = player1;
-    let currentSymbol = "X";
+    let currentSymbol = "x";
     let cells = [];
     let filledCells = 0; // Add this counter
 
@@ -111,7 +111,7 @@
                     return;
                 }
                 currentPlayer = (currentPlayer === player1) ? player2 : player1;
-                currentSymbol = (currentSymbol === "X") ? "O" : "X";
+                currentSymbol = (currentSymbol === "x") ? "o" : "x";
                 message.textContent = `${currentPlayer}, you're up`;
             }
         });
